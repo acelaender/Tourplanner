@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="at.fhtw.swen.tourplanner.tourplanner.Controller.MainController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <HBox>
+        <VBox>
+            <TextField fx:id="searchField"/>
+            <TableView fx:id="tourTable">
+                <columns>
+                    <TableColumn fx:id="nameColumn" text="Name"/>
+                    <TableColumn fx:id="descriptionColumn" text="Description"/>
+                </columns>
+            </TableView>
+            <HBox>
+                <Button text="Add Tour" onAction="#addTour"/>
+                <Button text="Delete" onAction="#deleteTour"/>
+                <Button text="Edit" onAction="#editTour"/>
+            </HBox>
+        </VBox>
+        <StackPane fx:id="contentPane">
+            <TabPane>
+                <Tab text="General" closable="false">
+                    <Label text="THIS IS THE GENERAL INFO TAB"/>
+                    <VBox>
+                        <Label fx:id="tourNameField"/>
+                        <Label fx:id="descriptionField"/>
+                        <Label fx:id="fromField"/>
+                        <Label fx:id="toField"/>
+                        <Label fx:id="distanceField"/>
+                        <Label fx:id="durationField"/>
+                    </VBox>
+                </Tab>
+                <Tab text="Route and Logs" closable="false">
+                    <VBox>
+                        <Label text="TOUR-Placeholder"/>
+                        <TextField fx:id="logSearchField"/>
+                        <TableView fx:id="tourLogs">
+                            <columns>
+                                <TableColumn fx:id="date" text="Date"/>
+                                <TableColumn fx:id="duration" text="Duration"/>
+                                <TableColumn fx:id="distance" text="Distance"/>
+                            </columns>
+                        </TableView>
+                        <Button text="Add Log" onAction="#addTourLog"/>
+                    </VBox>
+                </Tab>
+                <Tab text="Misc" closable="false">
+                    <Label text="THIS IS THE MISC TAB"/>
+                    <VBox>
+                        <Label fx:id="transportTypeField"/>
+                        <Label fx:id="routeInfoField"/>
+                    </VBox>
+                </Tab>
+            </TabPane>
+        </StackPane>
+    </HBox>
+</VBox>

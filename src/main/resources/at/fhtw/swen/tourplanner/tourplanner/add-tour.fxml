@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml" fx:controller="at.fhtw.swen.tourplanner.tourplanner.Controller.AddTourController" alignment="CENTER">
+    <Label text="Add new Tour"/>
+    <TextField fx:id="tourNameField" promptText="Tour Name"/>
+    <TextField fx:id="descriptionField" promptText="Description"/>
+    <TextField fx:id="fromField" promptText="Start Point"/>
+    <TextField fx:id="toField" promptText="End Point"/>
+    <ComboBox fx:id="transportTypeField" promptText="Select transport"/>
+    <TextField fx:id="routeInfoField" promptText="routeInformation"/>
+
+    <HBox>
+        <Button text="Save" onAction="#handleSave"/>
+    </HBox>
+</VBox>
