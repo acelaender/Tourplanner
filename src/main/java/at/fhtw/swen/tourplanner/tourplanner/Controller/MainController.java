@@ -1,5 +1,6 @@
 package at.fhtw.swen.tourplanner.tourplanner.Controller;
 
+import at.fhtw.swen.tourplanner.tourplanner.MainApplication;
 import at.fhtw.swen.tourplanner.tourplanner.model.TourEntry;
 import at.fhtw.swen.tourplanner.tourplanner.viewModel.MainViewModel;
 import javafx.fxml.FXML;
@@ -67,6 +68,11 @@ public class MainController implements Initializable {
     public void editTour() {
         mainViewModel.editTour();
     }
+
+    public void showMap(){
+        MainApplication.showMap();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
         mainViewModel.initialize(url, resourceBundle);

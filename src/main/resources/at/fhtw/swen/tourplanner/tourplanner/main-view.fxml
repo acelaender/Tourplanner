@@ -42,6 +42,7 @@
                 <Tab text="Route and Logs" closable="false">
                     <VBox>
                         <Label text="TOUR-Placeholder"/>
+                        <Button text="Show Route in Browser" onAction="#showMap"/>
                         <TextField fx:id="logSearchField"/>
                         <TableView fx:id="tourLogs">
                             <columns>

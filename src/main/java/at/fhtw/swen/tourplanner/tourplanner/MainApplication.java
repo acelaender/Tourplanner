@@ -2,6 +2,7 @@ package at.fhtw.swen.tourplanner.tourplanner;
 
 import at.fhtw.swen.tourplanner.tourplanner.Controller.MainController;
 import javafx.application.Application;
+import javafx.application.HostServices;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,13 +11,19 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.net.URL;
+import java.util.Objects;
+
 public class MainApplication extends Application {
 
     private static AnnotationConfigApplicationContext context;
     private static final Logger logger = LogManager.getLogger(MainApplication.class);
+    private static HostServices hostServices;
+
     @Override
     public void start(Stage stage) throws Exception{
         showStage(stage);
+        hostServices = getHostServices();
     }
 
     public static Parent showStage(Stage primaryStage) throws Exception{
@@ -41,4 +48,12 @@ public class MainApplication extends Application {
         initializeApp();
         launch();
     }
+
+    public static void showMap() {
+        URL url = MainApplication.class.getResource("/leaflet.html");
+        System.out.println(url);
+        hostServices.showDocument(Objects.requireNonNull(url).toExternalForm());
+    }
+
+
 }

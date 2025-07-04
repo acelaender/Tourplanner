@@ -4,6 +4,7 @@ import at.fhtw.swen.tourplanner.tourplanner.Controller.AddTourController;
 import at.fhtw.swen.tourplanner.tourplanner.Controller.AddTourLogController;
 import at.fhtw.swen.tourplanner.tourplanner.MainApplication;
 import at.fhtw.swen.tourplanner.tourplanner.model.TourEntry;
+import javafx.application.HostServices;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
@@ -19,10 +20,10 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 
@@ -35,6 +36,7 @@ public class MainViewModel implements Initializable {
     private final ObjectProperty<TourEntry> selectedTour = new SimpleObjectProperty<>();
 
     private static final Logger logger = LogManager.getLogger(MainViewModel.class);
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
     }
@@ -75,7 +77,6 @@ public class MainViewModel implements Initializable {
     public void editTour(){
         //TODO
     }
-
 
     public ObjectProperty<TourEntry> getSelectedTourProperty(){
         return selectedTour;
