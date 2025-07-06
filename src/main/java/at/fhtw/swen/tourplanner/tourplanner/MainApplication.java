@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,6 +15,7 @@ import org.apache.logging.log4j.Logger;
 import java.net.URL;
 import java.util.Objects;
 
+@SpringBootApplication
 public class MainApplication extends Application {
 
     private static AnnotationConfigApplicationContext context;
@@ -31,7 +33,7 @@ public class MainApplication extends Application {
         fxmlLoader.setControllerFactory(Controller -> context.getBean(MainController.class));
         Parent root = fxmlLoader.load();
         primaryStage.setTitle("Tour Planner");
-        primaryStage.setScene(new Scene(root, 1000, 800));
+        primaryStage.setScene(new Scene(root, 800, 600));
         logger.info("Application initialized, starting window");
         primaryStage.show();
         return root;

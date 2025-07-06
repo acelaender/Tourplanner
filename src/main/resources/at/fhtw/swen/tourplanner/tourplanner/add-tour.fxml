@@ -12,7 +12,9 @@
     <TextField fx:id="tourNameField" promptText="Tour Name"/>
     <TextField fx:id="descriptionField" promptText="Description"/>
     <TextField fx:id="fromField" promptText="Start Point"/>
+    <ListView fx:id="fromSuggestions" visible="false"/>
     <TextField fx:id="toField" promptText="End Point"/>
+    <ListView fx:id="toSuggestions" visible="false" />
     <ComboBox fx:id="transportTypeField" promptText="Select transport"/>
     <TextField fx:id="routeInfoField" promptText="routeInformation"/>
 

@@ -6,9 +6,41 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="at.fhtw.swen.tourplanner.tourplanner.AddTourLog"
-            prefHeight="400.0" prefWidth="600.0">
+<?import javafx.collections.FXCollections?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml" fx:controller="at.fhtw.swen.tourplanner.tourplanner.Controller.AddTourLogController" alignment="CENTER">
+    <Label text="Add new Tour-Log"/>
+    <DatePicker fx:id="datePicker"/>
+    <TextField fx:id="timeHours" promptText="Time taken (Hours)"/>
+    <TextField fx:id="timeMinutes" promptText="Time taken (Minutes)"/>
+    <TextField fx:id="commentField" promptText="Comments"/>
+    <TextField fx:id="distanceField" promptText="Distance (in Meters)"/>
+    <ChoiceBox fx:id="ratingField">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <Integer fx:value="1" />
+                <Integer fx:value="2" />
+                <Integer fx:value="3" />
+                <Integer fx:value="4" />
+                <Integer fx:value="5" />
+            </FXCollections>
+        </items>
+    </ChoiceBox>
 
-</AnchorPane>
+    <ChoiceBox fx:id="difficultyField">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <Integer fx:value="1" />
+                <Integer fx:value="2" />
+                <Integer fx:value="3" />
+                <Integer fx:value="4" />
+                <Integer fx:value="5" />
+            </FXCollections>
+        </items>
+    </ChoiceBox>
+
+    <HBox>
+        <Button text="Save" onAction="#handleSave"/>
+    </HBox>
+</VBox>
+

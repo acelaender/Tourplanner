@@ -1,49 +1,50 @@
 package at.fhtw.swen.tourplanner.tourplanner.model;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import jakarta.persistence.Entity;
+import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.springframework.stereotype.Component;
+
+
 public class TourEntry {
 
+    private int id;
     private final StringProperty name;
     private final StringProperty description;
-    private final StringProperty from;
-    private final StringProperty to;
+    private final ObjectProperty<Location> from;
+    private final ObjectProperty<Location> to;
     private final StringProperty transportType;
-    private final IntegerProperty distance;
-    private final IntegerProperty duration;
+    private final ObjectProperty<Route> route;
     private final StringProperty routeInfo;
 
 
 
 
-    public TourEntry(String name, String description, String from, String to, String transportType, int distance, int duration, String routeInfo) {
+    public TourEntry(int id, String name, String description, Location from, Location to, String transportType, Route route, String routeInfo) {
+        this.id = id;
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(description);
-        this.from = new SimpleStringProperty(from);
-        this.to = new SimpleStringProperty(to);
+        this.from = new SimpleObjectProperty<>(from);
+        this.to = new SimpleObjectProperty<>(to);
         this.transportType = new SimpleStringProperty(transportType);
-        this.distance = new SimpleIntegerProperty(distance);
-        this.duration = new SimpleIntegerProperty(duration);
+        this.route = new SimpleObjectProperty<>(route);
         this.routeInfo = new SimpleStringProperty(routeInfo);
     }
 
     public TourEntry(){
+        this.id = -1;
         this.name = new SimpleStringProperty("");
         this.description = new SimpleStringProperty("");
-        this.from = new SimpleStringProperty("");
-        this.to = new SimpleStringProperty("");
+        this.from = new SimpleObjectProperty<>(new Location("", "",""));
+        this.to = new SimpleObjectProperty<>(new Location("", "", ""));
         this.transportType = new SimpleStringProperty("");
-        this.distance = new SimpleIntegerProperty(0);
-        this.duration = new SimpleIntegerProperty(0);
+        this.route = new SimpleObjectProperty<>();
         this.routeInfo = new SimpleStringProperty("");
     }
 
     public ObservableList<String> getAvailableTransportTypes() {
-        return FXCollections.observableArrayList("Bike", "Hike", "Running", "Vacation");
+        return FXCollections.observableArrayList("driving-car", "cycling-regular", "foot-walking", "wheelchair");
     }
 
     public String getName() {
@@ -70,27 +71,27 @@ public class TourEntry {
         this.description.set(description);
     }
 
-    public String getFrom() {
+    public Location getFrom() {
         return from.get();
     }
 
-    public StringProperty fromProperty() {
+    public ObjectProperty<Location> fromProperty() {
         return from;
     }
 
-    public void setFrom(String from) {
+    public void setFrom(Location from) {
         this.from.set(from);
     }
 
-    public String getTo() {
+    public Location getTo() {
         return to.get();
     }
 
-    public StringProperty toProperty() {
+    public ObjectProperty<Location> toProperty() {
         return to;
     }
 
-    public void setTo(String to) {
+    public void setTo(Location to) {
         this.to.set(to);
     }
 
@@ -106,28 +107,16 @@ public class TourEntry {
         this.transportType.set(transportType);
     }
 
-    public int getDistance() {
-        return distance.get();
+    public Route getRoute() {
+        return route.get();
     }
 
-    public IntegerProperty distanceProperty() {
-        return distance;
+    public ObjectProperty<Route> routeProperty() {
+        return route;
     }
 
-    public void setDistance(int distance) {
-        this.distance.set(distance);
-    }
-
-    public int getDuration() {
-        return duration.get();
-    }
-
-    public IntegerProperty durationProperty() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration.set(duration);
+    public void setRoute(Route route) {
+        this.route.set(route);
     }
 
     public String getRouteInfo() {
@@ -140,5 +129,18 @@ public class TourEntry {
 
     public void setRouteInfo(String routeInfo) {
         this.routeInfo.set(routeInfo);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id){
+        this.id = id;
+    }
+
+    @Override
+    public String toString(){
+        return "Tour: " + name.get() + ", From: " + from.get() + ", To: " + to.get();
     }
 }

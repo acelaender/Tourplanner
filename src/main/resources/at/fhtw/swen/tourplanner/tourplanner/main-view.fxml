@@ -22,7 +22,7 @@
             </TableView>
             <HBox>
                 <Button text="Add Tour" onAction="#addTour"/>
-                <Button text="Delete" onAction="#deleteTour"/>
+                <Button text="Delete" onAction="#deleteCurrentTour"/>
                 <Button text="Edit" onAction="#editTour"/>
             </HBox>
         </VBox>
@@ -31,11 +31,17 @@
                 <Tab text="General" closable="false">
                     <Label text="THIS IS THE GENERAL INFO TAB"/>
                     <VBox>
+                        <Label text="Tour Name: "/>
                         <Label fx:id="tourNameField"/>
+                        <Label text="Tour Description: "/>
                         <Label fx:id="descriptionField"/>
+                        <Label text="Starting Point: "/>
                         <Label fx:id="fromField"/>
+                        <Label text="End Point: "/>
                         <Label fx:id="toField"/>
+                        <Label text="Distance in m: "/>
                         <Label fx:id="distanceField"/>
+                        <Label text="Duration in h: "/>
                         <Label fx:id="durationField"/>
                     </VBox>
                 </Tab>
@@ -59,6 +65,8 @@
                     <VBox>
                         <Label fx:id="transportTypeField"/>
                         <Label fx:id="routeInfoField"/>
+                        <Button text="Export Tour" onAction="#exportTour"/>
+                        <Button text="Create Tour Report" onAction="#exportTourReport"/>
                     </VBox>
                 </Tab>
             </TabPane>
